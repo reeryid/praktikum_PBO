@@ -253,8 +253,8 @@ public class Jurnal1 {
 		tumbuhan exDico = new tumbuhan("EX-DICO","02-02-2002",dico);
 		tumbuhan exCyca = new tumbuhan("EX-CYCA","03-03-2003",cyca);
 		tumbuhan exConi = new tumbuhan("EX-CONI","04-04-2004",coni);
-		tumbuhan exGink = new tumbuhan("EX-GINK","05-05-2005",cyca);
-		tumbuhan exGnet = new tumbuhan("EX-GNET","06-06-2006",coni);
+		tumbuhan exGink = new tumbuhan("EX-GINK","05-05-2005",gink);
+		tumbuhan exGnet = new tumbuhan("EX-GNET","06-06-2006",gnet);
 		
 		exMono.informasi_umum();
 		exMono.informasi_taksonomi();
@@ -291,11 +291,11 @@ public class Jurnal1 {
 		exGink.informasi_reproduksi();
 		exGink.informasi_sumber_energi();
 	
-		exGink.informasi_umum();
-		exGink.informasi_taksonomi();
-		exGink.informasi_sel();
-		exGink.informasi_bentuk();
-		exGink.informasi_reproduksi();
-		exGink.informasi_sumber_energi();
+		exGnet.informasi_umum();
+		exGnet.informasi_taksonomi();
+		exGnet.informasi_sel();
+		exGnet.informasi_bentuk();
+		exGnet.informasi_reproduksi();
+		exGnet.informasi_sumber_energi();
 	}
 }
