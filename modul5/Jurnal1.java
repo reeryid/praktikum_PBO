@@ -15,17 +15,17 @@ abstract class Divisi{
 	public String getTubuh(){return "Makroskopis";}
 }
 
-interface Angiospermae{}
-interface Gymnospermae{}
+interface Angiospermae extends Monocotyledoneae,Dicotyledoneae{}
+interface Gymnospermae extends Cycadinae,Coniferae,Ginkgoinae,Gnetinae{}
 
-interface Monocotyledoneae{}
+interface Monocotyledoneae {}
 interface Dicotyledoneae{}
 interface Cycadinae{}
 interface Coniferae{}
 interface Ginkgoinae{}
 interface Gnetinae{}
 
-class Subdivisi extends Divisi implements Monocotyledoneae,Dicotyledoneae,Cycadinae,Coniferae,Ginkgoinae,Gnetinae,Angiospermae,Gymnospermae{
+class Subdivisi extends Divisi implements Angiospermae,Gymnospermae{
 	Random random=new Random();
 	final int MAX_KELIPATAN_KONSTAN=3;//
 	int monokotil=2;
