@@ -45,7 +45,7 @@ public class View extends JFrame {
 				if (e.getKeyCode() == KeyEvent.VK_RIGHT ) {
 					if(mein.n < mein.nama_buah.size()-1){
 						mein.n++;
-			            String viewNama=mein.nama_buah.get(mein.n);
+			           		String viewNama=mein.nama_buah.get(mein.n);
 						int vStock=mein.jumlah_buah.get(mein.n);
 						String viewStock=Integer.toString(vStock); 
 						lblNama.setText(viewNama);
