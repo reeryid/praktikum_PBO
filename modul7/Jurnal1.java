@@ -168,7 +168,6 @@ public class Jurnal1 extends Thread{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 					
-					System.out.println(thread.isAlive());
 					liter_field.setText("0.00");
 		        	bayar_field.setText("0");
 		        	beli_field.setText("0");
