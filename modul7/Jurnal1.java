@@ -34,11 +34,10 @@ public class Jurnal1 extends Thread{
 	 * Launch the application.
 	 */
 	
-	class MyThread extends Thread {
+	class pascabayar extends Thread {
 	      @Override
 	      public void run() {
 	    	  try {
-		    	  if(beli_isi==0){
 			  		for(;;){
 					  		Thread.sleep(100);
 					  		bayar_isi+=100;
@@ -48,19 +47,27 @@ public class Jurnal1 extends Thread{
 					  		liter_field.setText(inc_liter);
 					  		bayar_field.setText(String.valueOf(bayar_isi));
 				  		} 
-		    	  }
-		    	  else {
-		    		  while(bayar_isi<beli_isi) {
-		    			  	Thread.sleep(100);
-					  		bayar_isi+=100;
-					  		liter_isi+=0.01;
-					  		String inc_liter=String.format("%.02f", liter_isi);
-					  		
-					  		liter_field.setText(inc_liter);
-					  		bayar_field.setText(String.valueOf(bayar_isi));
-		    			  	}
-		    		  
-		    	  }
+		  			}
+	    	  
+	    	 catch (InterruptedException e) {
+		  			e.printStackTrace();
+		  		}
+	    	}
+	  	}
+	
+	class prabayar extends Thread {
+	      @Override
+	      public void run() {
+	    	  try {
+	    		  while(bayar_isi<beli_isi) {
+	    			  	Thread.sleep(100);
+				  		bayar_isi+=100;
+				  		liter_isi+=0.01;
+				  		String inc_liter=String.format("%.02f", liter_isi);
+				  		
+				  		liter_field.setText(inc_liter);
+				  		bayar_field.setText(String.valueOf(bayar_isi));
+	    			  	}
 		  	}
 	    	  
 	    	 catch (InterruptedException e) {
@@ -91,7 +98,8 @@ public class Jurnal1 extends Thread{
 			e.printStackTrace();
 		}
 
-		MyThread thread=new MyThread();
+		pascabayar thread1=new pascabayar();
+		prabayar thread2=new prabayar();
 		
 		frmPomBensin = new JFrame();
 		frmPomBensin.setResizable(false);
@@ -139,14 +147,22 @@ public class Jurnal1 extends Thread{
 			public void actionPerformed(ActionEvent e) {
 				beli_isi=Integer.parseInt(beli_field.getText());
 
-				
-		               if (!thread.isAlive()) {
-		                  thread.start();
+				if(beli_isi==0) {
+		               if (!thread1.isAlive()) {
+		                  thread1.start();
 		               }
 		               else{
-		                  thread.resume();
+		                  thread1.resume();
 		               }
-		           
+				}
+				else {
+					if (!thread2.isAlive()) {
+		                  thread2.start();
+		               }
+		               else{
+		                  thread2.resume();
+		               }
+				}
 			}
 		});
 		btnIsi.setBounds(81, 180, 89, 23);
@@ -156,8 +172,8 @@ public class Jurnal1 extends Thread{
 		btnStop.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				thread.suspend();
-				System.out.println(thread.isAlive());
+				if(thread1.isAlive()) {thread1.suspend();}
+				else if(thread2.isAlive()) {thread2.suspend();}
 			}
 		});
 		btnStop.setBounds(180, 180, 89, 23);
@@ -168,7 +184,6 @@ public class Jurnal1 extends Thread{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 					
-					System.out.println(thread.isAlive());
 					liter_field.setText("0.00");
 		        	bayar_field.setText("0");
 		        	beli_field.setText("0");
